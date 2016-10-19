@@ -7,6 +7,18 @@ if(browserSupport){
 	$('#profilePic').on('change', function(){
 		var $this = this;
 		file = $this.files[0];
+		
+		var reader = new FileReader();
+		
+		reader.onload = function(event){
+			var src = event.target.result;
+			var image = document.createElement('img');
+			image.src = src;
+			$('#picWindow').append(image);
+		}
+		
+		reader.readAsDataURL(file);
+		
 	});
 
 	$('#submitButton').on('click', function(){
